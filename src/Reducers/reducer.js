@@ -22,7 +22,7 @@ export const reducer = (state = initialState, action) => {
                 additionalPrice: state.additionPrice + action.payload.price,
                 car: {
                     ...state.car,
-                    fatures: [
+                    features: [
                         ...state.car.features,
                         action.payload
                     ]
