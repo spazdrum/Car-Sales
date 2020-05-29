@@ -1,3 +1,6 @@
+import { ADD_FEATURE } from '../actions/addFeature';
+// import { DELETE_FEATURE } from '../actions/deleteFeature';
+
 const initialState = {
     additionalPrice: 0,
     car: {
@@ -15,8 +18,11 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
+    if (state.car.features.includes(action.payload) && action.type === ADD_FEATURE) {
+        action.type = ''
+    }
     switch (action.type) {
-        case 'ADD_ITEM':
+        case 'ADD_FEATURE':
             return {
                 ...state,
                 additionalPrice: state.additionalPrice + action.payload.price,
@@ -29,7 +35,7 @@ export const reducer = (state = initialState, action) => {
                 }
             }
 
-        case 'REMOVE_ITEM':
+        case 'DELETE_FEATURE':
             return {
                 ...state,
                 additionalPrice: state.additionalPrice - action.payload.price,
