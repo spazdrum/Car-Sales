@@ -1,5 +1,5 @@
 const initialState = {
-    additionPrice: 0,
+    additionalPrice: 0,
     car: {
         price: 26395,
         name: '2019 Ford Mustang',
@@ -19,7 +19,7 @@ export const reducer = (state = initialState, action) => {
         case 'ADD_ITEM':
             return {
                 ...state,
-                additionalPrice: state.additionPrice + action.payload.price,
+                additionalPrice: state.additionalPrice + action.payload.price,
                 car: {
                     ...state.car,
                     features: [
@@ -32,7 +32,7 @@ export const reducer = (state = initialState, action) => {
         case 'REMOVE_ITEM':
             return {
                 ...state,
-                additionalPrice: state.additionPrice - action.payload.price,
+                additionalPrice: state.additionalPrice - action.payload.price,
                 car: {
                     ...state.car,
                     features: [
