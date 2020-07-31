@@ -1,15 +1,12 @@
-import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { reducer } from './Reducers/reducer';
-import Header from './components/Header';
-import AddedFeatures from './components/AddedFeatures';
-import AdditionalFeatures from './components/AdditionalFeatures';
-import Total from './components/Total';
+import React from "react";
 
-const store =createStore(reducer)
+import Header from "./components/Header";
+import AddedFeatures from "./components/AddedFeatures";
+import AdditionalFeatures from "./components/AdditionalFeatures";
+import Total from "./components/Total";
+import { connect } from "react-redux";
 
-const App = () => {
+const App = (props) => {
   // const state = {
   //   additionalPrice: 0,
   //   car: {
@@ -28,19 +25,25 @@ const App = () => {
   // };
 
   return (
-    <Provider store={store}>
-      <div className="boxes">
-        <div className="box">
-          <Header />
-          <AddedFeatures/> 
-        </div>
-        <div className="box">
-          <AdditionalFeatures />
-          <Total />
-        </div>
+    <div className="boxes">
+      <div className="box">
+        <Header car={props.car} />
+        <AddedFeatures car={props.car} />
       </div>
-    </Provider>
+      <div className="box">
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
+      </div>
+    </div>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    car: state.car,
+    additionalFeatures: state.additionalFeatures,
+    additionalPrice: state.additionalPrice,
+  };
+};
+
+export default connect(mapStateToProps, {})(App);

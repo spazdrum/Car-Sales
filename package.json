@@ -10,6 +10,10 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+<<<<<<< HEAD
+=======
+    "react-redux": "^7.2.0",
+>>>>>>> bd233f8d2f95428e6227d512b5cc8cb6788e7a8e
     "react-scripts": "3.4.0",
     "redux": "^4.0.5"
   },
